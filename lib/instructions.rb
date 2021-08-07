@@ -1,16 +1,34 @@
 # frozen_string_literal: false
 
+# rubocop:disable Metrics/AbcSize
+
+# instructions
 module Instructions
-  puts <<-INSTRUCTIONS
+  def instructions
+    puts <<~HEREDOC
 
-  This is a Mastermind game played with one human player
-  versus the computer
-  The player can choose whether to be the one making the
-  code or the one guessing it.
+      #{formatting('red', 'How to play Mastermind:')}      
+      ASDH
 
-  Instructions
-  Hello there mister
-  How are you doing today
+    HEREDOC
+  end
 
-  INSTRUCTIONS
+  def formatting(description, string)
+    {
+      'underline' => "\e[4;1m#{string}\e[0m",
+      'red' => "\e[31;1m#{string}\e[0m"
+    }[description]
+  end
 end
+
+# TRY
+class Test
+  include Instructions
+
+  def print
+    instructions
+  end
+end
+
+t = Test.new
+t.print
