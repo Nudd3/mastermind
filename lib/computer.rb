@@ -10,6 +10,8 @@ class Computer
   end
 
   # Array of 4 pegs
+  # The code consists of 4 pegs of different color
+  # The color is choosen using a number 1-6
   def generate_code
     generate_colors
     generate_order
