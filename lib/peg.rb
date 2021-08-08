@@ -7,11 +7,11 @@
 class Peg
   def initialize(value)
     @value = value
-    @color = set_color(value)
+    @color = choose_color(value)
   end
 end
 
-def get_color(value)
+def choose_color(value)
   case value
   when 1 then 'red'
   when 2 then 'orange'
@@ -31,12 +31,6 @@ end
 # 5: white
 # 6: black
 
-puts get_color(1)
-puts get_color(2)
-puts get_color(3)
-puts get_color(4)
-puts get_color(5)
-puts get_color(6)
 x = 'Hello'
 puts "\e[30m#{x}\e[0m"
 
