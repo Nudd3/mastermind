@@ -1,13 +1,11 @@
 # frozen_string_literal: false
 
-# rubocop:disable Metrics/AbcSize
-
 # instructions
 module Instructions
   def instructions
     puts <<~HEREDOC
 
-      #{formatting('red', 'How to play Mastermind:')}      
+      #{formatting('red', 'How to play Mastermind:')}
       ASDH
 
     HEREDOC
