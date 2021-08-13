@@ -9,16 +9,20 @@ class Peg
     @value = value
     @color = choose_color(value)
   end
-end
 
-def choose_color(value)
-  case value
-  when 1 then 'red'
-  when 2 then 'orange'
-  when 3 then 'blue'
-  when 4 then 'yellow'
-  when 5 then 'white'
-  when 6 then 'black'
+  def choose_color(value)
+    case value
+    when 1 then 'red'
+    when 2 then 'orange'
+    when 3 then 'blue'
+    when 4 then 'yellow'
+    when 5 then 'white'
+    when 6 then 'black'
+    end
+  end
+
+  def to_s
+    "#{@value} : #{@color}"
   end
 end
 
