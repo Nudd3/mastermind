@@ -1,5 +1,8 @@
 # frozen_string_literal: false
 
+require_relative 'computer_creator'
+require_relative 'human_guesser'
+
 # Mastermind Game
 
 #
@@ -9,9 +12,30 @@
 #   One player
 #   One computer
 #
-#   First: Computer selects the code, human guesses
-#
+#   First:
+#     1. Computer selects the code, human guesses
+#     2. Player guesses
+#     3. Computer puts a black peg for correct position
+#        and correct color
+#        and a white peg for wrong position but correct
+#        color
 #
 class Game
+  def setup_game
+    #choose_roles
+    generate
+  end
+
+  # Choose who's the breaker and the maker
   def choose_roles; end
+
+  # Generate the code
+  def generate
+    maker = ComputerCreator.new
+    guesser = HumanGuesser.new(maker.code)
+    guesser.guess
+  end
 end
+
+game = Game.new
+game.setup_game
