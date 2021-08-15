@@ -9,6 +9,10 @@ class HumanGuesser
   def guess
     print 'Make your guess: '
     guess = gets.chomp.to_i
-    puts 'GENIUS' if guess == @code
+    until guess == @code
+      print 'Make your guess: '
+      guess = gets.chomp.to_i
+      puts 'GENIUS' if guess == @code
+    end
   end
 end
