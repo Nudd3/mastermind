@@ -12,7 +12,7 @@ module IntroMessage
       human first chooses whether to be the one creating
       or breaking the code.
 
-      A code is created by 4 numbers 1-6 connected to a color:
+      A code is created by 4 numbers 1-6, each connected to a color:
 
               #{code_colors('1')}#{code_colors('2')}#{code_colors('3')}#{code_colors('4')}#{code_colors('5')}#{code_colors('6')}
 
@@ -45,5 +45,3 @@ module IntroMessage
     }[number]
   end
 end
-
-intro_message

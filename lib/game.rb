@@ -2,6 +2,8 @@
 
 require_relative 'computer_creator'
 require_relative 'human_guesser'
+require_relative './intro_message'
+#require_relative 'lib/intro_message'
 
 # Mastermind Game
 
@@ -21,9 +23,11 @@ require_relative 'human_guesser'
 #        color
 #
 class Game
+  include IntroMessage
   def setup_game
+    intro_message
     #choose_roles
-    generate
+    # generate
   end
 
   # Choose who's the breaker and the maker

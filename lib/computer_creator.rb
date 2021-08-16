@@ -1,6 +1,6 @@
 # frozen_string_literal: false
 
-require_relative 'peg'
+
 
 # Class for when the computer creates the code
 class ComputerCreator
