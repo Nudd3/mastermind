@@ -6,7 +6,7 @@ module IntroMessage
   def intro_message
     puts <<-INTRO
 
-      Welcome to Mastermind!
+      #{underline('Welcome to Mastermind!')}
 
       This game is played human vs computer where the
       human first chooses whether to be the one creating
@@ -14,7 +14,7 @@ module IntroMessage
 
       A code is created by 4 numbers 1-6, each connected to a color:
 
-              #{code_colors('1')}#{code_colors('2')}#{code_colors('3')}#{code_colors('4')}#{code_colors('5')}#{code_colors('6')}
+              #{color_code('1')}#{color_code('2')}#{color_code('3')}#{color_code('4')}#{color_code('5')}#{color_code('6')}
 
 
       The braker then has 12 guesses to break the code
@@ -25,23 +25,27 @@ module IntroMessage
 
       To give an example:
 
-      Let's say the code is 1234, that be
+      Let's say the code is 1412, that would result in it looking like so:
 
-              #{code_colors('1')}#{code_colors('2')}#{code_colors('3')}#{code_colors('4')}
+              #{color_code('1')}#{color_code('4')}#{color_code('1')}#{color_code('2')}
 
     INTRO
-
-    #color_instructions
   end
 
-  def code_colors(number)
+  def color_code(number)
     {
-      '1' => "\e[101m  1  \e[0m ",
-      '2' => "\e[43m  2  \e[0m ",
-      '3' => "\e[44m  3  \e[0m ",
-      '4' => "\e[45m  4  \e[0m ",
-      '5' => "\e[46m  5  \e[0m ",
-      '6' => "\e[41m  6  \e[0m "
+      # '1' => "\e[40m  1  \e[0m ", # black
+      '1' => "\e[41m  1  \e[0m ", # red
+      '2' => "\e[42m  2  \e[0m ", # green
+      '3' => "\e[43m  3  \e[0m ", # yellow
+      '4' => "\e[44m  4  \e[0m ", # blue
+      '5' => "\e[45m  5  \e[0m ", # magenta
+      '6' => "\e[46m  6  \e[0m ", # cyan
+      # '8' => "\e[47m  1  \e[0m "  # white
     }[number]
+  end
+
+  def underline(text)
+    "\e[4m#{text}\e[24m"
   end
 end
