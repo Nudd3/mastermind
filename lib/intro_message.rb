@@ -11,23 +11,27 @@ module IntroMessage
       #{underline('Welcome to Mastermind!')}
 
       This game is played human vs computer where the
-      human first chooses whether to be the one creating
-      or breaking the code.
+      human first chooses whether to be the 'maker' or
+      the 'breaker' of the code.
 
-      A code is created by 4 numbers 1-6, each connected to a color:
+      A code is created by 4 number/color combinations:
 
               #{color_code('1')}#{color_code('2')}#{color_code('3')}#{color_code('4')}#{color_code('5')}#{color_code('6')}
 
+      The same number/color can be used more than once.
 
-      The braker then has 12 guesses to break the code
-      After each guess the breaker can get two different kinds of clues,
-      one that indicates that a number is correct but in the wrong
-      spot, and one that indicates that a number is both correct
-      and at the correct spot.
+      The breaker has 12 guesses to find out the correct code.
 
-      To give an example:
-      # Code pegs and key pegs, ONLY ONE CLUE PER PEG
-      Let's say the code is 1412, that would mean it is looking like so:
+      #{underline('Clues')}:
+
+      There are two different kinds of clues:
+
+      #{clue_code('*')}: One correct number in the correct position.
+      #{clue_code('?')}: One correct number in the wrong position.
+
+      #{underline('An example')}:
+
+      Let's say the code is 1412, that be:
 
               #{color_code('1')}#{color_code('4')}#{color_code('1')}#{color_code('2')}
 
@@ -35,10 +39,11 @@ module IntroMessage
 
       Guess:  #{color_code('1')}#{color_code('2')}#{color_code('3')}#{color_code('3')} Clues: #{clue_code('*')}#{clue_code('?')}
 
-      will give two clues
-      will give the clues that you have one peg fully correct(the first '1')
-      and one that is the correct color but at the wrong position(the '2').
+      The clues to the right of the guess now tells you that one
+      number is at the correct position (the first '1') and that
+      one is correct but at the wrong position (the '2').
 
+      #{underline('Now lets play Mastermind!')}
     INTRO
   end
 
