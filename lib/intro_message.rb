@@ -2,9 +2,14 @@
 
 # rubocop:disable Metrics/AbcSize
 
+require_relative './text_decoration'
+
 # Module containing the introduction message describing what Mastermind is
 # as well as how it's played
+# It also gives a quick example
 module IntroMessage
+  include TextDecoration
+
   def intro_message
     puts <<-INTRO
 
@@ -43,39 +48,10 @@ module IntroMessage
       number is at the correct position (the first '1') and that
       one is correct but at the wrong position (the '2').
 
-      #{underline('Now lets play Mastermind!')}
+                    #{underline('Now lets play Mastermind!')}
+
+
     INTRO
-  end
-
-  def color_code(number)
-    {
-      # '1' => "\e[40m  1  \e[0m ", # black
-      '1' => "\e[41m  1  \e[0m ", # red
-      '2' => "\e[42m  2  \e[0m ", # green
-      '3' => "\e[43m  3  \e[0m ", # yellow
-      '4' => "\e[44m  4  \e[0m ", # blue
-      '5' => "\e[45m  5  \e[0m ", # magenta
-      '6' => "\e[46m  6  \e[0m " # cyan
-      # '8' => "\e[47m  1  \e[0m "  # white
-    }[number]
-  end
-
-  def clue_code(number)
-    {
-      '*' => "\e[31m *\e[0m ", # 100%
-      '?' => "\e[36m *\e[0m " # 50%
-    }[number]
-  end
-
-  def underline(text)
-    "\e[4m#{text}\e[24m"
-  end
-
-  def formatting(description, string)
-    {
-      'underline' => "\e[4;1m#{string}\e[0m",
-      'red' => "\e[31;1m#{string}\e[0m"
-    }[description]
   end
 end
 

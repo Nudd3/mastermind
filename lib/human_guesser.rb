@@ -2,17 +2,8 @@
 
 # Class for when the human is the guesser
 class HumanGuesser
-  def initialize(code)
-    @code = code
-  end
-
-  def guess
-    print 'Make your guess: '
-    guess = gets.chomp.to_i
-    until guess == @code
-      print 'Make your guess: '
-      guess = gets.chomp.to_i
-      puts 'GENIUS' if guess == @code
-    end
+  def guess(guess_number)
+    print "Guess ##{guess_number}: "
+    gets.chomp
   end
 end
