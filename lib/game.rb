@@ -85,13 +85,26 @@ class Game
     }
     #binding.pry
     # Need to save indices checked
-    saved_indices = {}
+    saved_indices = []
 
+    # Finding the 100% correct ones
     # This one is working as intended
     (0..3).each do |i|
       clues['*'] += 1 if guess[i] == master[i]
       saved_indices << i
     end
+
+    (0..3).each do |i| 
+      (0..3).each do |j|
+        if guess[i] == master[j]
+          if i != j && !saved_indices.include?(i)
+            clues['?'] += 1
+            continue
+          end
+        end
+      end
+    end
+    # Finding the ones with the wrong position
     clues
   end
 end
