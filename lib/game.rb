@@ -30,6 +30,7 @@ class Game
   def initialize
     @maker = ComputerCreator.new
     @code = @maker.code
+
     @breaker = HumanGuesser.new
   end
 
@@ -55,6 +56,7 @@ class Game
       guess = @breaker.guess(guess_counter)
       print_guess(guess)
       print_clues(clue_generator(@maker.code, guess))
+
       print "\n"
       if guess == @code
         puts 'HELLO!'
@@ -72,39 +74,23 @@ class Game
   end
 
   def print_clues(clues_hash)
-    #number.to_i.times { print clue_code('*').to_s }
+    # number.to_i.times { print clue_code('*').to_s }
     clues_hash['*'].times { print clue_code('*') }
     clues_hash['?'].times { print clue_code('?') }
   end
 
-  
   def clue_generator(master, guess)
-    clues = {
-      '*' => 0, # This one always works
-      '?' => 0 # Why isn't this working! Check the else statement
-    }
-    #binding.pry
-    # Need to save indices checked
-    saved_indices = []
+    puts ''
+    clues =
+      {
+        '*' => 0, # This one always works
+        '?' => 0 # Why isn't this working! Check the else statement
+      }
+    guess = guess.to_s.split(//).map(&:to_i)
+    master = master.to_s.split(//).map(&:to_i)
 
-    # Finding the 100% correct ones
-    # This one is working as intended
-    (0..3).each do |i|
-      clues['*'] += 1 if guess[i] == master[i]
-      saved_indices << i
-    end
+    
 
-    (0..3).each do |i| 
-      (0..3).each do |j|
-        if guess[i] == master[j]
-          if i != j && !saved_indices.include?(i)
-            clues['?'] += 1
-            continue
-          end
-        end
-      end
-    end
-    # Finding the ones with the wrong position
     clues
   end
 end
