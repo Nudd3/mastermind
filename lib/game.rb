@@ -54,6 +54,7 @@ class Game
     guess_counter = 1
     until guess_counter > 12
       guess = @breaker.guess(guess_counter)
+      #puts "ASD" unless control_guess(guess.to_s.split(//).map(&:to_i))
       print_guess(guess)
       print_clues(clue_generator(@maker.code, guess))
 
@@ -80,7 +81,6 @@ class Game
   end
 
   def clue_generator(master, guess)
-    puts ''
     clues =
       {
         '*' => 0, # This one always works
@@ -89,8 +89,31 @@ class Game
     guess = guess.to_s.split(//).map(&:to_i)
     master = master.to_s.split(//).map(&:to_i)
 
-    
+    (0..3).each do |i|
+      if guess[i] == master[i]
+        clues['*'] += 1
+        master[i] = 7
+      end
+    end
+    print "Master: #{master}"
+    guess.each do |i|
+      next unless master.include?(i)
 
+      master.each do |j|
+        next unless i == j
+
+        guess.index(i) == master.index(j) ? clues['*'] += 1 : clues['?'] += 1
+        # master.delete_at(master.index(i))
+        master[master.index(j)] = 7
+        next
+      end
+    end
     clues
+  end
+
+  def control_guess(guess)
+    return false if guess.any? { |digit| digit > 6 }
+
+    guess.length > 4
   end
 end
