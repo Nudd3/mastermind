@@ -11,8 +11,6 @@ module TextDecoration
       '5' => "\e[45m  5  \e[0m ", # magenta
       '6' => "\e[46m  6  \e[0m "  # cyan
     }[number]
-    # "\e[47m  1  \e[0m " # white
-    # "\e[40m  1  \e[0m " # black
   end
 
   def clue_code(symbol)
@@ -24,5 +22,11 @@ module TextDecoration
 
   def underline(text)
     "\e[4m#{text}\e[24m"
+  end
+  
+  def print_clues(correct, half_correct)
+    correct.times { print clue_code('*') }
+    half_correct.times { print clue_code('?') }
+    puts ''
   end
 end
