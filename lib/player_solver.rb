@@ -9,6 +9,7 @@ class PlayerSolver
   include Messages
 
   def player_start
+    start_up_message
     @maker = generate_code
     player_guess
   end

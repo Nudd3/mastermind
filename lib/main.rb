@@ -3,4 +3,4 @@
 require_relative 'game'
 
 g = Game.new
-g.setup_game
+g.play
