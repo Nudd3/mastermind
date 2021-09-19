@@ -8,13 +8,9 @@ class PlayerSolver
   include GameLogic
   include Messages
 
-  def player_start
-    start_up_message
-    @maker = generate_code
-    player_guess
+  def initialize
+    @code = generate_code
   end
-
-  private
 
   def generate_code
     pw = ''
