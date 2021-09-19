@@ -5,12 +5,13 @@ require_relative 'intro_message'
 # class where everything is put together
 class Game
   include IntroMessage
-  def initialize
-    intro_message
-    # @maker = choose_role
-  end
+  def play; end
 
   def choose_role; end
+
+  def player_maker; end
+
+  def player_breaker; end
 end
 
 # rubocop:disable Style/BlockComments
