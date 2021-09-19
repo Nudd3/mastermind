@@ -23,4 +23,18 @@ module Messages
     puts 'Unfortunately the computer won this time...'
     print "\n"
   end
+
+  def print_clues(correct, half_correct)
+    print 'Clues: '
+    correct.times { print clue_code('*') }
+    half_correct.times { print clue_code('?') }
+    print "\n\n"
+  end
+
+  def print_guess(guess)
+    print "\n"
+    guess.split(//).each do |val|
+      print "#{color_code(val)} "
+    end
+  end
 end
