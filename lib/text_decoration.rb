@@ -23,10 +23,4 @@ module TextDecoration
   def underline(text)
     "\e[4m#{text}\e[24m"
   end
-  
-  def print_clues(correct, half_correct)
-    correct.times { print clue_code('*') }
-    half_correct.times { print clue_code('?') }
-    puts ''
-  end
 end
