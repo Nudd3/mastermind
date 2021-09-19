@@ -1,17 +1,40 @@
 # frozen_string_literal: false
 
 require_relative 'intro_message'
+require_relative 'messages'
 
 # class where everything is put together
 class Game
   include IntroMessage
-  def play; end
+  include Messages
+  def play
+    intro_message
+    role = choose_role
+    player_maker if role == '1'
+    player_breaker if role == '2'
+  end
 
-  def choose_role; end
+  private
 
-  def player_maker; end
+  def choose_role
+    role_choosing_message
+    input = gets.chomp
+    until input.match(/^[1-2]$/)
+      role_choosing_message
+      input = gets.chomp
+    end
+  end
 
-  def player_breaker; end
+  def player_maker
+  
+    maker = ComputerSolver.new
+    maker.play
+  end
+
+  def player_breaker
+    breaker = PlayerSolver.new
+    breaker.play
+  end
 end
 
 # rubocop:disable Style/BlockComments
