@@ -2,9 +2,13 @@
 
 require_relative 'intro_message'
 require_relative 'messages'
+require_relative 'game_logic'
+require_relative 'player_solver'
+require_relative 'computer_solver'
 
 # class where everything is put together
 class Game
+  include GameLogic
   include IntroMessage
   include Messages
   def play
@@ -14,8 +18,6 @@ class Game
     player_breaker if role == '2'
   end
 
-  private
-
   def choose_role
     role_choosing_message
     input = gets.chomp
@@ -23,17 +25,17 @@ class Game
       role_choosing_message
       input = gets.chomp
     end
+    input
   end
 
   def player_maker
-  
     maker = ComputerSolver.new
     maker.play
   end
 
   def player_breaker
     breaker = PlayerSolver.new
-    breaker.play
+    breaker.player_guess
   end
 end
 

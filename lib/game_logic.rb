@@ -45,20 +45,6 @@ module GameLogic
     counter
   end
 
-  def print_clues(correct, half_correct)
-    print 'Clues: '
-    correct.times { print clue_code('*') }
-    half_correct.times { print clue_code('?') }
-    print "\n\n"
-  end
-
-  def print_guess(guess)
-    print "\n"
-    guess.split(//).each do |val|
-      print "#{color_code(val)} "
-    end
-  end
-
   def solved?(guess, master)
     guess == master
   end

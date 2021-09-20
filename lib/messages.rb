@@ -24,6 +24,10 @@ module Messages
     print "\n"
   end
 
+  def guess_message(number)
+    print "Guess number #{number} (1-6): "
+  end
+
   def print_clues(correct, half_correct)
     print 'Clues: '
     correct.times { print clue_code('*') }
