@@ -12,6 +12,11 @@ module Messages
     print "\n"
   end
 
+  def player_create_code
+    puts 'You are the MAKER'
+    puts 'Please enter the code'
+  end
+
   def player_won_message
     print "\n"
     puts 'Congrats to the player! The computer stood no chance!'
@@ -25,7 +30,11 @@ module Messages
   end
 
   def guess_message(number)
-    print "Guess number #{number} (1-6): "
+    puts "Guess number #{number} (1-6): "
+  end
+
+  def last_guess_message
+    print 'This is your last guess!'
   end
 
   def print_clues(correct, half_correct)

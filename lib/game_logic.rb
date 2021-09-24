@@ -19,6 +19,8 @@ module GameLogic
     }
   end
 
+  private
+
   def fully_correct(guess, master)
     counter = 0
     master.each_with_index do |value, index|
@@ -43,9 +45,5 @@ module GameLogic
       guess[index] = '?'
     end
     counter
-  end
-
-  def solved?(guess, master)
-    guess == master
   end
 end

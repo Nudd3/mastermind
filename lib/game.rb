@@ -30,7 +30,7 @@ class Game
 
   def player_maker
     maker = ComputerSolver.new
-    maker.play
+    maker.computer_guess
   end
 
   def player_breaker

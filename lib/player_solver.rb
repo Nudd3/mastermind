@@ -46,6 +46,7 @@ class PlayerSolver
   end
 
   def make_guess(number)
+    last_guess_message if number == 12
     guess_message(number)
     input = gets.chomp
     until input.match(/^[1-6]{4}$/)
