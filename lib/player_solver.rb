@@ -27,6 +27,17 @@ class PlayerSolver
     computer_won_message if turn_ctr == 13
   end
 
+  def make_guess(number)
+    last_guess_message if number == 12
+    guess_message(number)
+    input = gets.chomp
+    until input.match(/^[1-6]{4}$/)
+      guess_message(number)
+      input = gets.chomp
+    end
+    input
+  end
+
   private
 
   def generate_code
@@ -45,14 +56,5 @@ class PlayerSolver
     guess == @code ? player_won_message : false
   end
 
-  def make_guess(number)
-    last_guess_message if number == 12
-    guess_message(number)
-    input = gets.chomp
-    until input.match(/^[1-6]{4}$/)
-      guess_message(number)
-      input = gets.chomp
-    end
-    input
-  end
+  
 end

@@ -34,7 +34,7 @@ module Messages
   end
 
   def last_guess_message
-    print 'This is your last guess!'
+    puts 'This is your last guess!'
   end
 
   def print_clues(correct, half_correct)
