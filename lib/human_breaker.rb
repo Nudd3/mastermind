@@ -15,5 +15,5 @@ class HumanBreaker
     @code = 4.times.map { rand(1..6) }
   end
 
-  def play; end
+  
 end

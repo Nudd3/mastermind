@@ -23,7 +23,7 @@ class Game
 
       return input if input.match(/^[1-2]$/)
 
-      puts 'Please choose your role'
+      print 'Please choose role: '
     end
   end
 end
