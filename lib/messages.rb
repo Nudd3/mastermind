@@ -3,11 +3,11 @@
 require_relative 'display'
 
 # Module containing the welcome/introduction message for the game
-module Introduction
+module Messages
   include Display
 
   # rubocop:disable Metrics
-  def message
+  def introduction_message
     "
       Welcome to Mastermind! In this version a human will play versus
       the computer to see who's the better code breaker/maker.
@@ -43,4 +43,16 @@ module Introduction
     "
   end
   # rubocop:enable Metrics
+
+  def mode_selection_message
+    '
+    What role would you like to have:
+    1. Code breaker
+    2. Code maker (not working atm)
+    '
+  end
+
+  def mode_selection_error_message
+    'Please choose role(1/2): '
+  end
 end

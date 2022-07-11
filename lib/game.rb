@@ -1,29 +1,27 @@
 # frozen_string_literal: false
 
-require_relative 'introduction'
+require_relative 'messages'
+require_relative 'human_breaker'
+require_relative 'computer_breaker'
 
 # Class for game
 class Game
-  include Introduction
+  include Messages
 
   def initialize
-    puts message
-    sleep 2
+    puts introduction_message
     mode = mode_selector
     mode == 1 ? HumanBreaker.new : ComputerBreaker.new
   end
 
   def mode_selector
-    puts 'What role would you like to have: '
-    puts '1. Code breaker'
-    puts '2. Code maker (not working atm)'
-    print ': '
+    puts mode_selection_message
     loop do
-      input = gets.chomp
+      input = gets.chomp.to_i
 
-      return input if input.match(/^[1-2]$/)
+      return input if input.match?(/^[1-2]$/)
 
-      print 'Please choose role: '
+      print mode_selection_error_message
     end
   end
 end

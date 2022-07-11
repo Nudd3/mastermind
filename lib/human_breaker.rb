@@ -6,7 +6,7 @@ class HumanBreaker
 
   def initialize
     create_code
-    play(1)
+    play
   end
 
   private
@@ -15,5 +15,7 @@ class HumanBreaker
     @code = 4.times.map { rand(1..6) }
   end
 
-  
+  def play
+    # gets.chomp.split(//).map(&:to_i)
+  end
 end

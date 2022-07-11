@@ -5,40 +5,40 @@ module GameLogic
   def find_clues(code, guess)
     @code_clone = code.clone
     @guess_clone = guess.clone
-    @exacts = exacts
-    @colors = color
+    #@exacts = exact_matches
+    #@colors = color
     {
-      1 => @exacts,
-      2 => @colors
+      '*' => exact_matches,
+      '?' => partial_matches
     }
   end
 
-  def exacts
-    exacts = 0
+  def exact_matches
+    matches = 0
     @code_clone.each_with_index do |v, i|
       next unless v == @guess_clone[i]
 
-      exacts += 1
+      matches += 1
       @code_clone[i] = '*'
       @guess_clone[i] = '*'
     end
-    exacts
+    matches
   end
 
-  def color
-    color = 0
+  def partial_matches
+    matches = 0
     @code_clone.each_with_index do |v, i|
       @guess_clone.each_with_index do |e, j|
         next if e.is_a?(String) || i == j
 
         next unless v == e
 
-        color += 1
+        matches += 1
         @code_clone[i] = '?'
         @guess_clone[j] = '?'
       end
     end
-    color
+    matches
   end
 end
 
