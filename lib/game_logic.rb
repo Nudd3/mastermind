@@ -5,8 +5,6 @@ module GameLogic
   def find_clues(code, guess)
     @code_clone = code.clone
     @guess_clone = guess.clone
-    #@exacts = exact_matches
-    #@colors = color
     {
       '*' => exact_matches,
       '?' => partial_matches
@@ -40,10 +38,8 @@ module GameLogic
     end
     matches
   end
+
+  def winner?(code, guess)
+    guess == code
+  end
 end
-
-include GameLogic
-
-a = [1, 2, 1, 1]
-b = [1, 1, 1, 5]
-puts find_clues(a, b)

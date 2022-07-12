@@ -33,8 +33,7 @@ module Messages
       And the guess is:
       #{display_peg(2)} #{display_peg(2)} #{display_peg(6)} #{display_peg(4)}
 
-      That would result in the following clues:
-      #{display_clue('*')} #{display_clue('?')} #{display_clue('?')}
+      That would result in the following clues: #{display_clue('*')} #{display_clue('?')} #{display_clue('?')}
 
       The #{display_clue('*')} is because of the #{display_peg(2)} being in the correct position and color
       The two #{display_clue('?')} because the second #{display_peg(2)} and the #{display_peg(6)}
@@ -46,13 +45,34 @@ module Messages
 
   def mode_selection_message
     '
-    What role would you like to have:
-    1. Code breaker
-    2. Code maker (not working atm)
+      What role would you like to have:
+        1. Code breaker
+        2. Code maker (not working atm)
     '
   end
 
   def mode_selection_error_message
     'Please choose role(1/2): '
+  end
+
+  def guess_message(guesses)
+    "#{guesses} guesses remaining
+    Make guess:
+    "
+  end
+
+  def guess_error_message
+    '
+        Invalid guess!
+        A guess has to consist of 4 numbers between 1 and 6
+    '
+  end
+
+  def computer_wins_message
+    'The computer won this time!'
+  end
+
+  def player_wins_message
+    'Congratulations! You won!'
   end
 end

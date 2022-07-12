@@ -11,13 +11,13 @@ class Game
   def initialize
     puts introduction_message
     mode = mode_selector
-    mode == 1 ? HumanBreaker.new : ComputerBreaker.new
+    mode == '1' ? HumanBreaker.new : ComputerBreaker.new
   end
 
   def mode_selector
     puts mode_selection_message
     loop do
-      input = gets.chomp.to_i
+      input = gets.chomp
 
       return input if input.match?(/^[1-2]$/)
 

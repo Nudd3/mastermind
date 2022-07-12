@@ -34,11 +34,3 @@ module Display
     puts "\n"
   end
 end
-
-include Display
-code = [1,2,3,4]
-guess = [4,2,1,3]
-print "\nCode: #{code}\n"
-print "Guess: #{guess}"
-
-display_turn(code, guess)
