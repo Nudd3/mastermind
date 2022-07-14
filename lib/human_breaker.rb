@@ -11,8 +11,9 @@ class HumanBreaker
   include GameLogic
 
   def initialize
-    @guesses = 12
+    @guesses = 2
     create_code
+    puts "Code: #{@code}"
     play
   end
 
@@ -26,20 +27,21 @@ class HumanBreaker
     until @guesses.zero?
       guess = make_guess
       display_turn(@code, guess)
-      puts human_wins_message if winner?(@code, guess)
+      break if winner?(@code, guess)
+
       @guesses -= 1
     end
-    puts computer_wins_message
+    find_winner
   end
 
   def make_guess
     loop do
-      puts guess_message(@guesses)
+      print guess_message(@guesses)
       input = gets.chomp.split(//).map(&:to_i)
 
       return input if guess_valid?(input)
 
-      puts guess_error_message
+      print guess_messageguess_error_message
     end
   end
 
@@ -48,5 +50,14 @@ class HumanBreaker
     return false unless guess.all? { |v| v.between?(1, 6) }
 
     true
+  end
+
+  def find_winner
+    if @guesses.zero?
+      puts computer_wins_message
+      display_code(@code)
+    else
+      puts human_wins_message
+    end
   end
 end
