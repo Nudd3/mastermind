@@ -91,4 +91,13 @@ module Messages
   Congratulations! You figured it out!
   '
   end
+
+  def computer_code_creater_message
+    print "\n  "
+    4.times do
+      print '. '
+      sleep 0.7
+    end
+    print " ==> Code created!\n"
+  end
 end

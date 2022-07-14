@@ -19,6 +19,7 @@ class HumanBreaker
   private
 
   def create_code
+    computer_code_creater_message
     @code = 4.times.map { rand(1..6) }
   end
 
