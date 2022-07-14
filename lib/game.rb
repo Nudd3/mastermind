@@ -15,7 +15,8 @@ class Game
   end
 
   def mode_selector
-    puts mode_selection_message
+    #puts mode_selection_message
+    print mode_selection_message
     loop do
       input = gets.chomp
 
