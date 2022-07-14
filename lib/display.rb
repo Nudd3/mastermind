@@ -25,12 +25,19 @@ module Display
   end
 
   def display_turn(code, guess)
+    print "\n  "
     guess.each { |nr| print "#{display_peg(nr)} " }
-    puts "\n"
+    print '  '
 
     clues = find_clues(guess, code)
     clues['*'].times { print display_clue('*') }
     clues['?'].times { print display_clue('?') }
+    puts "\n"
+  end
+
+  def display_code(code)
+    print '  '
+    code.each { |nr| print "#{display_peg(nr)} " }
     puts "\n"
   end
 end
