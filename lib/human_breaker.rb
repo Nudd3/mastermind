@@ -11,9 +11,8 @@ class HumanBreaker
   include GameLogic
 
   def initialize
-    @guesses = 2
+    @guesses = 12
     create_code
-    puts "Code: #{@code}"
     play
   end
 
