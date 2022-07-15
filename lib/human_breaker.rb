@@ -39,17 +39,11 @@ class HumanBreaker
       print guess_message(@guesses)
       input = gets.chomp.split(//).map(&:to_i)
 
-      return input if guess_valid?(input)
+      # return input if guess_valid?(input)
+      return input if input_valid?(input)
 
-      print guess_messageguess_error_message
+      print guess_error_message
     end
-  end
-
-  def guess_valid?(guess)
-    return false if guess.length != 4
-    return false unless guess.all? { |v| v.between?(1, 6) }
-
-    true
   end
 
   def find_winner

@@ -42,4 +42,11 @@ module GameLogic
   def winner?(code, guess)
     guess == code
   end
+
+  def input_valid?(input)
+    return false if input.length != 4
+    return false unless input.all? { |v| v.between?(1, 6) }
+
+    true
+  end
 end
