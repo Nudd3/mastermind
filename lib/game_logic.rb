@@ -5,10 +5,14 @@ module GameLogic
   def find_clues(code, guess)
     @code_clone = code.clone
     @guess_clone = guess.clone
-    {
+    a = {
       '*' => exact_matches,
       '?' => partial_matches
     }
+    print "code clone: #{@code_clone}\n\n"
+    print "guess_clone: #{@guess_clone}\n\n"
+    
+    a
   end
 
   def exact_matches
@@ -22,18 +26,25 @@ module GameLogic
     end
     matches
   end
+  # 5, 1, 2, 3
+  # 1, 2, 3, 1
+  
 
   def partial_matches
     matches = 0
     @code_clone.each_with_index do |v, i|
+      next if v == '*'
       @guess_clone.each_with_index do |e, j|
-        next if e.is_a?(String) || i == j
+        next if e == '*' || i == j
 
         next unless v == e
 
         matches += 1
         @code_clone[i] = '?'
+        v = '?'
         @guess_clone[j] = '?'
+        e = '?'
+        break
       end
     end
     matches
