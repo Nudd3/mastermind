@@ -36,8 +36,8 @@ module GameLogic
         @code_clone[i] = '?'
         v = '?'
         @guess_clone[j] = '?'
-        e = '?'
-        break
+        # e = '?'
+        # break
       end
     end
     matches
