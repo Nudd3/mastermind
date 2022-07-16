@@ -73,23 +73,31 @@ module Messages
   => "
   end
 
-  def guess_error_message
-    '
-  Invalid guess! A guess has to consist of 4 numbers between 1 and 6
-    '
-  end
-
-  def computer_wins_message
-    "\n
-  The computer won this time!
-  This was the code
+  def code_creator_message
     "
+  Create your code
+  => "
   end
 
-  def human_wins_message
-    '
-  Congratulations! You figured it out!
-  '
+  def input_error_message(role)
+    {
+      'breaker' => "\nInvalid guess! A guess has to consist of 4 numbers between 1 and 6",
+      'maker' => "\nInvalid code! A code has to consist of 4 numbers between 1 and 6"
+    }[role]
+  end
+
+  def computer_wins_message(role)
+    {
+      'breaker' => "\n  The computer figured it out! Too bad...\n",
+      'maker' => "\n  Ouch! Mr computer are good at making codes!\n  Here's the code:\n"
+    }[role]
+  end
+
+  def human_wins_message(role)
+    {
+      'breaker' => "\nCongratulations! You figuered it out!\n",
+      'maker' => "\nSmarter than a computer huh? Congratulations!\n\n"
+    }[role]
   end
 
   def computer_code_creater_message

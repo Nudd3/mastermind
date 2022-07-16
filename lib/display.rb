@@ -38,6 +38,6 @@ module Display
   def display_code(code)
     print '  '
     code.each { |nr| print "#{display_peg(nr)} " }
-    puts "\n"
+    puts "\n\n"
   end
 end

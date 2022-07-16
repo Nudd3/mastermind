@@ -39,19 +39,18 @@ class HumanBreaker
       print guess_message(@guesses)
       input = gets.chomp.split(//).map(&:to_i)
 
-      # return input if guess_valid?(input)
       return input if input_valid?(input)
 
-      print guess_error_message
+      print input_error_message('breaker')
     end
   end
 
   def find_winner
     if @guesses.zero?
-      puts computer_wins_message
+      puts computer_wins_message('maker')
       display_code(@code)
     else
-      puts human_wins_message
+      puts human_wins_message('breaker')
     end
   end
 end
