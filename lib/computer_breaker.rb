@@ -13,8 +13,8 @@ class ComputerBreaker
   def initialize
     @guesses = 12
     @code = create_code
-    @codes = create_set
-    # play
+    @set = create_set
+    play
   end
 
   private
@@ -36,9 +36,12 @@ class ComputerBreaker
       display_turn(@code, guess)
       break if winner?(@code, guess)
 
+      remove_from_set(guess)
+      puts "New size: #{@set.size}"
       @guesses -= 1
       sleep 0.5
     end
+    puts "End set: #{@set}"
     find_winner
   end
 
@@ -50,8 +53,19 @@ class ComputerBreaker
   def computer_guess
     # 4.times.map { rand(1..6) }
     current_guess = [1, 1, 2, 2]
-    current_clues = find_clues(@code, current_guess)
-    current_guess = current_clues
+    current_guess if @guesses == 12
+
+    @set[5].to_s.split(//).map(&:to_i)
+    # now to remove all from set that doesn't give the same clues
+    # maybe that should be done in a method being called from #play
+  end
+
+  def remove_from_set(current_guess)
+    clues = find_clues(@code, current_guess)
+    @set.each do |code|
+      temp = code.to_s.split(//).map(&:to_i)
+      @set.delete(code) unless find_clues(current_guess, temp) == clues
+    end
   end
 
   def create_set
@@ -62,10 +76,6 @@ class ComputerBreaker
 end
 
 # Donald Knuth
-# 1. Create the set S of 1296 possible codes, 1111 -> 6666
-# 2. Start with initial guess 1122
-# 3. Play the guess to get clues
-# 4. If the clues are 4 correct -> Game over
 # 5. Otherwise, remove from S any code that would not give the same response
 #    if it (the guess) were the code
 # 6.
