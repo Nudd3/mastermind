@@ -1,5 +1,7 @@
 # Mastermind
 
+Try it out [here](https://replit.com/@Nudd3/mastermind#.replit)
+
 Mastermind game played human vs computer. The human can choose whether to be the one
 creating the code or the one breaking the code.
 
